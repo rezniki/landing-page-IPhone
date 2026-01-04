@@ -1,0 +1,719 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+body {
+    background: linear-gradient(180deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%);
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Background Image */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('image/AI Image IPhone13.svg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Background Overlay - затемнение */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(26, 10, 46, 0.75) 0%, rgba(45, 27, 78, 0.8) 50%, rgba(26, 10, 46, 0.95) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    justify-content: space-between;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-top: 135px;
+}
+
+/* Close Button */
+.close-button {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 100;
+}
+
+.close-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.close-button:active {
+    opacity: 0.7;
+}
+
+/* Header */
+.header {
+    padding: 20px 24px 24px;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.title-line1 {
+    display: block;
+}
+
+.title-line2 {
+    display: block;
+    width: 100%;
+}
+
+/* Features Grid */
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 20px 24px;
+    flex-wrap: nowrap;
+}
+
+.feature-card {
+    flex: 1;
+    max-width: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.feature-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin-top: -10px;
+}
+
+.feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    image-rendering: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.feature-text {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    font-size: 11px;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/* Subscription Container */
+.subscription-container {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.subscription-option {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    padding: 16px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.subscription-option.selected {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.subscription-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.subscription-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70%;
+}
+
+.subscription-option:not(.selected) .subscription-label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.subscription-option.selected .subscription-label {
+    color: #ffffff;
+}
+
+.best-offer-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%);
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.subscription-option.selected .best-offer-badge {
+    background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%);
+    color: #ffffff;
+}
+
+.subscription-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.price-main {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.price-sub {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Button Container */
+.button-container {
+    padding: 0 20px 16px;
+}
+
+.continue-button {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: #ffffff;
+    color: #000000;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.continue-button:active {
+    opacity: 0.8;
+}
+
+/* Footer */
+.footer {
+    padding: 0 20px 20px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-link {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link:active {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-link-right {
+    margin-left: auto;
+}
+
+/* Device-specific Adaptations */
+
+/* iPhone SE (320px width, 568px height) */
+@media screen and (max-width: 320px) and (max-height: 568px) {
+    html, body {
+        overflow: hidden;
+    }
+    
+    .main-wrapper {
+        transform: scale(0.92);
+        transform-origin: top center;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        padding-top: 110px;
+    }
+    
+    body::before {
+        background-image: url('image/AI Image IPhone8.svg');
+        background-position: center -20px;
+        background-size: cover;
+    }
+    
+    .main-title {
+        font-size: 24px;
+        padding: 10px 16px 14px;
+    }
+    
+    .features-grid {
+        gap: 6px;
+        padding: 0 12px 14px;
+    }
+    
+    .feature-card {
+        max-width: 130px;
+    }
+    
+    .feature-text {
+        font-size: 8.5px;
+        line-height: 1.2;
+    }
+    
+    .subscription-container {
+        padding: 0 12px 10px;
+        gap: 8px;
+    }
+    
+    .subscription-option {
+        padding: 10px;
+        border-radius: 12px;
+    }
+    
+    .subscription-label {
+        font-size: 10px;
+    }
+    
+    .price-main {
+        font-size: 14px;
+    }
+    
+    .price-sub {
+        font-size: 11px;
+    }
+    
+    .button-container {
+        padding: 0 12px 10px;
+    }
+    
+    .continue-button {
+        padding: 14px;
+        font-size: 15px;
+    }
+    
+    .footer {
+        padding: 0 12px 10px;
+        font-size: 10px;
+    }
+}
+
+/* iPhone 8 (375px width, 667px height) */
+@media screen and (width: 375px) and (height: 667px) {
+    html, body {
+        overflow: hidden;
+    }
+    
+    .main-wrapper {
+        transform: scale(0.95);
+        transform-origin: top center;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        padding-top: 110px;
+    }
+    
+    body::before {
+        background-image: url('image/AI Image IPhone8.svg');
+        background-position: center -15px;
+        background-size: cover;
+    }
+    
+    .main-title {
+        font-size: 28px;
+        padding: 14px 20px 18px;
+    }
+    
+    .features-grid {
+        gap: 9px;
+        padding: 0 16px 18px;
+    }
+    
+    .feature-card {
+        max-width: 95px;
+    }
+    
+    .feature-text {
+        font-size: 9.5px;
+        line-height: 1.25;
+    }
+    
+    .subscription-container {
+        padding: 0 16px 14px;
+        gap: 10px;
+    }
+    
+    .subscription-option {
+        padding: 13px;
+    }
+    
+    .subscription-label {
+        font-size: 11px;
+    }
+    
+    .price-main {
+        font-size: 15px;
+    }
+    
+    .price-sub {
+        font-size: 12px;
+    }
+    
+    .button-container {
+        padding: 0 16px 12px;
+    }
+    
+    .continue-button {
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    .footer {
+        padding: 0 16px 14px;
+        font-size: 11px;
+    }
+}
+
+/* iPhone 8+ (414px width, 736px height) */
+@media screen and (width: 414px) and (height: 736px) {
+    html, body {
+        overflow: hidden;
+    }
+    
+    .main-wrapper {
+        transform: scale(0.97);
+        transform-origin: top center;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        padding-top: 135px;
+    }
+    
+    body::before {
+        background-image: url('image/AI Image IPhone8.svg');
+        background-position: center -10px;
+        background-size: cover;
+    }
+    
+    .main-title {
+        font-size: 30px;
+        padding: 18px 20px 22px;
+    }
+    
+    .features-grid {
+        gap: 12px;
+        padding: 0 20px 22px;
+    }
+    
+    .feature-card {
+        max-width: 110px;
+    }
+    
+    .feature-text {
+        font-size: 10.5px;
+        line-height: 1.3;
+    }
+    
+    .subscription-container {
+        padding: 0 20px 18px;
+        gap: 11px;
+    }
+    
+    .subscription-option {
+        padding: 14px;
+    }
+    
+    .subscription-label {
+        font-size: 11.5px;
+    }
+    
+    .price-main {
+        font-size: 15.5px;
+    }
+    
+    .price-sub {
+        font-size: 12.5px;
+    }
+    
+    .button-container {
+        padding: 0 20px 16px;
+    }
+    
+    .continue-button {
+        padding: 15px;
+        font-size: 16.5px;
+    }
+    
+    .footer {
+        padding: 0 20px 18px;
+        font-size: 11.5px;
+    }
+}
+
+/* iPhone X (375px width, 812px height) */
+@media screen and (width: 375px) and (height: 812px) {
+    .main-wrapper {
+        transform: none;
+        height: 100vh;
+        height: 100dvh;
+        padding-top: 218px;
+    }
+    
+    body::before {
+        background-image: url('image/AI Image IPhone13.svg');
+        background-position: center top;
+        background-size: cover;
+    }
+    
+    .main-title {
+        font-size: 32px;
+        padding: 20px 24px 24px;
+    }
+    
+    .features-grid {
+        padding: 0 20px 28px;
+        gap: 12px;
+    }
+    
+    .feature-card {
+        max-width: 110px;
+    }
+    
+    .feature-text {
+        font-size: 11px;
+    }
+    
+    .subscription-container {
+        padding: 0 20px 24px;
+        gap: 12px;
+    }
+    
+    .subscription-option {
+        padding: 16px;
+    }
+    
+    .button-container {
+        padding: 0 20px 20px;
+    }
+    
+    .footer {
+        padding: 0 20px 24px;
+    }
+}
+
+/* iPhone 12 (390px width, 844px height) - масштабирование от iPhone X */
+@media screen and (width: 390px) and (height: 844px) {
+    html, body {
+        overflow: hidden;
+    }
+    
+    .main-wrapper {
+        transform: scale(1.04);
+        transform-origin: top center;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        padding-top: 218px;
+    }
+    
+    body::before {
+        background-image: url('image/AI Image IPhone13.svg');
+        background-position: center top;
+        background-size: cover;
+    }
+    
+    .main-title {
+        font-size: 33px;
+        padding: 21px 25px 25px;
+    }
+    
+    .features-grid {
+        gap: 12.5px;
+        padding: 0 21px 29px;
+    }
+    
+    .feature-card {
+        max-width: 114px;
+    }
+    
+    .feature-text {
+        font-size: 11.5px;
+    }
+    
+    .subscription-container {
+        padding: 0 21px 25px;
+        gap: 12.5px;
+    }
+    
+    .subscription-option {
+        padding: 16.5px;
+    }
+    
+    .button-container {
+        padding: 0 21px 21px;
+    }
+    
+    .continue-button {
+        padding: 16.5px;
+        font-size: 17.5px;
+    }
+    
+    .footer {
+        padding: 0 21px 25px;
+        font-size: 12.5px;
+    }
+}
+
+/* Landscape orientation - hide */
+@media screen and (orientation: landscape) {
+    .main-wrapper {
+        display: none;
+    }
+    
+    body::after {
+        content: 'Please rotate your device to portrait mode';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        font-size: 18px;
+        z-index: 1000;
+    }
+}
+
+/* Text scaling for longer languages */
+.text-scaled {
+    font-size: 0.9em !important;
+}
+
+.text-scaled-sm {
+    font-size: 0.85em !important;
+}
+
+/* Retina display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .feature-image {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+}
+
